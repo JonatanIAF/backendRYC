@@ -11,6 +11,7 @@ exports.getDireccionNuevoLeon = (req, res) => {
     attributes: ['calle', 'int', 'ext', 'cp', 'e', 'm'],
     where: { curp: req.params.curp }
   }).then(data => {
+    res.send(data);
     municipiosChiapas.findOne({
       attributes: ['nombreEntidad', 'nombreMunicipio'],
       where: { entidad: data.e, municipio: data.m }
