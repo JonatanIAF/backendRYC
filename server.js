@@ -38,7 +38,7 @@ app.get('/imgs/:name', function (req,res, next) {
 
 // parse requests of content-type - application/json
 app.use(bodyParser.json());
-
+//Futuros cambios
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
 
