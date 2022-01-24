@@ -1,7 +1,6 @@
 const db = require("../models");
 const inenl = db.inenl;
-const municipiosNuevoLeon = db.municipiosNuevoLeon;
-const municipiosChiapas= db.municipiosChiapas;
+const municipiosChiapas = db.municipiosChiapas;
 const Op = db.Sequelize.Op;
 
 
@@ -11,7 +10,6 @@ exports.getDireccionNuevoLeon = (req, res) => {
     attributes: ['calle', 'int', 'ext', 'cp', 'e', 'm'],
     where: { curp: req.params.curp }
   }).then(data => {
-    res.send(data);
     municipiosChiapas.findOne({
       attributes: ['nombreEntidad', 'nombreMunicipio'],
       where: { entidad: data.e, municipio: data.m }
@@ -29,3 +27,4 @@ exports.getDireccionNuevoLeon = (req, res) => {
       message: err    });
   });
 };
+
