@@ -4,21 +4,23 @@ const municipiosNuevoLeon = db.municipiosNuevoLeon;
 const Op = db.Sequelize.Op;
 
 
-
 exports.getDireccionNuevoLeon = (req, res) => {
   inenl.findOne({
     attributes: ['calle', 'int', 'ext', 'cp', 'e', 'm'],
     where: { curp: req.params.curp }
   }).then(data => {
-    res.send(data);
+    console.log(data.toJSON());
     municipiosNuevoLeon.findOne({
-      attributes: ['nombreEntidad', 'nombreMunicipio'],
-      where: { entidad: data.e, municipio: data.m }
+      attributes: ['nombreEntidad', 'nombreMunicipio']
+    }).then(all => {
+      console.log(all.toJSON());
     }).catch(err => {
-      res.status(500).send({
-        message: err
-      });
-      console.log("aqui");
-    });
+      console.log(err);
+    })
+
+
+  }).catch(err => {
+    console.log(err);
   });
+
 };
