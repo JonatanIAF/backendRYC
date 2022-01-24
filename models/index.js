@@ -35,5 +35,4 @@ db.asistencias = require("../models/asistencias.model.js")(sequelize, Sequelize)
 db.precliente = require("../models/pre-cliente.model.js")(sequelize, Sequelize);
 db.ineChiapas12 = require("../models/ineChiapas12.model.js")(sequelize, Sequelize);
 db.inenl= require("../models/inenl.model.js")(sequelize, Sequelize);
-db.municipiosNuevoLeon= require("../models/municipiosNuevoLeon.model.js")(sequelize, Sequelize);
 module.exports = db;

@@ -2,7 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const fs = require("fs");
-const https = require("http");
+const https = require("https");
 var pKey = fs.readFileSync('./server.key', 'utf8');
 var pCert = fs.readFileSync('./server.crt', 'utf8');
 const multipart = require ("connect-multiparty");
@@ -38,7 +38,7 @@ app.get('/imgs/:name', function (req,res, next) {
 
 // parse requests of content-type - application/json
 app.use(bodyParser.json());
-
+//Futuros cambios
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
 
