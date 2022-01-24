@@ -1,5 +1,7 @@
+const req = require("express/lib/request");
 const db = require("../models");
 const prospectonl = db.prospectonl;
+const inenl = db.inenl;
 const Op = db.Sequelize.Op;
 
 exports.findByCond = (req, res) => {
@@ -56,7 +58,19 @@ exports.getByRange = (req, res) => {
   });
 };
 
-
+exports.getProspectNL = (req, res) => {
+  prospectonl.findAll({
+    attributes: ['nombre', 'curp', 'direccion', 'anotacion'],
+    where: {aplica: 'si', precalif: 'true'}
+  }).then(data => {
+      console.log(data);
+      res.send(data);
+  }).catch(err => {
+    res.status(500).send({
+      message:err
+    });
+  });
+};
 
 exports.getAll = (req, res) => {
   prospectonl.findAll().then(data => {

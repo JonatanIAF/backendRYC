@@ -35,4 +35,9 @@ module.exports = function(app) {
     "/api/prospectos/findAll/",
     controller.getAll
   );
+
+  app.get(
+    "/api/prospectos/getProspectCh/",
+    controller.getProspectCh
+  );
 };

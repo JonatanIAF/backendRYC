@@ -56,6 +56,19 @@ exports.getByRange = (req, res) => {
   });
 };
 
+exports.getProspectCh = (req, res) => {
+  Prospecto.findAll({
+    attributes: ['nombre', 'curp', 'direccion', 'anotacion'],
+    where: {aplica: 'si', precalif: 'true'}
+  }).then(data => {
+      console.log(data);
+      res.send(data);
+  }).catch(err => {
+    res.status(500).send({
+      message:err
+    });
+  });
+}
 
 
 exports.getAll = (req, res) => {
