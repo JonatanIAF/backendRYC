@@ -16,7 +16,7 @@ exports.getDireccion = (req, res) => {
     }).then(data2 => {
       data.e = data2.nombreEntidad;
       data.m = data2.nombreMunicipio;
-      res.send(data)
+      res.send(data);
     }).catch(err => {
       res.status(500).send({
         message: err    });
