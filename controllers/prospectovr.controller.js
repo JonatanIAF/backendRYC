@@ -1,11 +1,13 @@
+const req = require("express/lib/request");
 const db = require("../models");
-const Prospecto = db.prospecto;
+const prospectovr = db.prospectovr;
+const inevr = db.inevr;
 const Op = db.Sequelize.Op;
 
 exports.findByCond = (req, res) => {
   const cond = req.params.cond;
   if(cond == 'siperono'){
-    Prospecto.findAll({
+    prospectovr.findAll({
       where: { aplica: 'no', montolinea4 : { [Op.ne]: null}}
     }).then(data => {
       res.send(data);
@@ -15,7 +17,7 @@ exports.findByCond = (req, res) => {
       });
     });
   }else{
-    Prospecto.findAll({
+    prospectovr.findAll({
       where: { aplica: cond }
     }).then(data => {
       res.send(data);
@@ -29,7 +31,7 @@ exports.findByCond = (req, res) => {
 
 exports.updatePrecalif = (req, res) => {
   const id = req.params.id;
-  Prospecto.update({precalif : true, direccion : req.body.direccion, anotacion : req.body.anotacion},
+  prospectovr.update({precalif : true, direccion : req.body.direccion, anotacion : req.body.anotacion},
    {
     where: { id: id }
   }).then(num => {
@@ -44,7 +46,7 @@ exports.updatePrecalif = (req, res) => {
 };
 
 exports.getByRange = (req, res) => {
-  Prospecto.findAll({
+  prospectovr.findAll({
     where: {aplica: 'si', precalif: 'false'},
     offset: req.params.inferior, limit: req.params.superior
   }).then(data => {
@@ -56,8 +58,8 @@ exports.getByRange = (req, res) => {
   });
 };
 
-exports.getProspectCh = (req, res) => {
-  Prospecto.findAll({
+exports.getProspectVR = (req, res) => {
+  prospectovr.findAll({
     attributes: ['nombre', 'curp', 'direccion', 'anotacion'],
     where: {aplica: 'si', precalif: 'true'}
   }).then(data => {
@@ -68,11 +70,10 @@ exports.getProspectCh = (req, res) => {
       message:err
     });
   });
-}
-
+};
 
 exports.getAll = (req, res) => {
-  Prospecto.findAll().then(data => {
+  prospectovr.findAll().then(data => {
     res.send(data);
   }).catch(err => {
     res.status(500).send({
@@ -82,7 +83,7 @@ exports.getAll = (req, res) => {
 };
 
 exports.add = (req, res) => {
-  Prospecto.create({
+  prospectovr.create({
     superId: req.body.superId,
     nombre: req.body.nombre,
     nss: req.body.nss,
@@ -95,6 +96,8 @@ exports.add = (req, res) => {
   }).then(data => {
     res.send({ message: "Register was registered successfully" });
   }).catch(err => {
+      console.log(err)
       res.status(500).send({ message: err.message });
   });
+
 };
