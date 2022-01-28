@@ -1,5 +1,5 @@
 const db = require("../models");
-const inenvr = db.inenvr;
+const inenvr = db.inevr;
 const municipiosChiapas = db.municipiosChiapas;
 const Op = db.Sequelize.Op;
 

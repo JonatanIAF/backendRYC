@@ -1,5 +1,5 @@
 module.exports = (sequelize, Sequelize) => {
-    const inevr = sequelize.define("inevr", {
+    const inevr = sequelize.define("inenvrconcentrado", {
       cve: {
         type: Sequelize.STRING
       },
