@@ -1,4 +1,4 @@
-const controller = require("../controllers/inevr.controller");
+const controller = require("../controllers/ineVeracruz2018.controller");
 
 module.exports = function(app) {
   app.use(function(req, res, next) {

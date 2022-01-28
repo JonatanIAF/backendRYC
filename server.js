@@ -63,5 +63,5 @@ require('./routes/prospectonl.routes')(app);
 require('./routes/asistencias.routes')(app);
 require('./routes/pre-cliente.routes')(app);
 require('./routes/ineChiapas12.routes')(app);
-require('./routes/inevr.routes')(app);
+require('./routes/ineVeracruz2018.routes')(app);
 require('./routes/inenl.routes')(app);
