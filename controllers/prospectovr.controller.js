@@ -92,6 +92,7 @@ exports.add = (req, res) => {
     montolinea2: req.body.montolinea2,
     descMensual: req.body.descMensual,
     aplica: req.body.aplica,
+    precalif: 'false',
     excepcion: req.body.excepcion
   }).then(data => {
     res.send({ message: "Register was registered successfully" });
