@@ -10,7 +10,7 @@ module.exports = function(app) {
   });
 
   app.get(
-    "/api/db/inevrconcentrado/get/direccion/:curp",
+    "/api/db/ineVeracruz2018/get/direccion/:curp",
     controller.getDireccionVeracruz
   );
 
