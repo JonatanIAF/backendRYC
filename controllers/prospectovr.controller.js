@@ -1,7 +1,6 @@
 const req = require("express/lib/request");
 const db = require("../models");
 const prospectovr = db.prospectovr;
-const inevr = db.inevr;
 const Op = db.Sequelize.Op;
 
 exports.findByCond = (req, res) => {

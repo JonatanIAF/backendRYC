@@ -1,5 +1,5 @@
 module.exports = (sequelize, Sequelize) => {
-    const inevr = sequelize.define("inenvrconcentrado", {
+    const inevrconcentrado = sequelize.define("inenvrconcentrado", {
       cve: {
         type: Sequelize.STRING
       },
@@ -72,5 +72,5 @@ module.exports = (sequelize, Sequelize) => {
     },{
     freezeTableName: true
     });
-    return inevr;
+    return inevrconcentrado;
   };

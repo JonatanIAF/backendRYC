@@ -1,11 +1,11 @@
 const db = require("../models");
-const inenvr = db.inevrconcentrado;
+const inevrconcentrado = db.inevrconcentrado;
 const municipiosChiapas = db.municipiosChiapas;
 const Op = db.Sequelize.Op;
 
 
 exports.getDireccionVeracruz = (req, res) => {
-  inenvr.findOne({
+  inevrconcentrado.findOne({
     attributes: ['calle', 'int', 'ext', 'cp', 'e', 'm'],
     where: { curp: req.params.curp }
   }).then(data => {
