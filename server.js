@@ -57,7 +57,7 @@ app.get("/", (req, res) => {
 require('./routes/auth.routes')(app);
 require('./routes/user.routes')(app);
 require('./routes/database.routes')(app);
-require('./routes/prospecto.routes')(app);
+require('./routes/prospectos.routes')(app);
 require('./routes/prospectovr.routes')(app);
 require('./routes/prospectonl.routes')(app);
 require('./routes/asistencias.routes')(app);
