@@ -40,6 +40,5 @@ module.exports = function(app) {
     "/api/prospectosvr/getProspectVR/",
     controller.getProspectVR
   );
-
-
+  
 };

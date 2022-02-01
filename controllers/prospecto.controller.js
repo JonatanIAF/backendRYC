@@ -14,7 +14,19 @@ exports.findByCond = (req, res) => {
         message:err
       });
     });
-  }else{
+  }
+  else if(cond == 'cc'){
+    Prospecto.findAll({
+      where: { montolinea4 : { [Op.between]: [1000, 100000] } }
+    }).then(data => {
+      res.send(data);
+    }).catch(error => {
+      res.status(500).send({
+        message:error
+      });
+    });
+  }
+  else{
     Prospecto.findAll({
       where: { aplica: cond }
     }).then(data => {
