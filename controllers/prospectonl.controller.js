@@ -6,36 +6,36 @@ const Op = db.Sequelize.Op;
 
 exports.findByCond = (req, res) => {
   const cond = req.params.cond;
-  if(cond == 'siperono'){
+  if (cond == 'siperono') {
     prospectonl.findAll({
-      where: { aplica: 'no', montolinea4 : { [Op.ne]: null}}
+      where: { aplica: 'no', montolinea4: { [Op.ne]: null } }
     }).then(data => {
       res.send(data);
     }).catch(err => {
       res.status(500).send({
-        message:err
+        message: err
       });
     });
   }
-  else if(cond == 'cc'){
+  else if (cond == 'cc') {
     prospectonl.findAll({
-      where: { montolinea4 : { [Op.between]: [1000, 100000] } }
+      where: { montolinea4: { [Op.between]: [1000, 100000] } }
     }).then(data => {
       res.send(data);
     }).catch(error => {
       res.status(500).send({
-        message:error
+        message: error
       });
     });
   }
-  else{
+  else {
     prospectonl.findAll({
       where: { aplica: cond }
     }).then(data => {
       res.send(data);
     }).catch(err => {
       res.status(500).send({
-        message:err
+        message: err
       });
     });
   }
@@ -43,29 +43,29 @@ exports.findByCond = (req, res) => {
 
 exports.updatePrecalif = (req, res) => {
   const id = req.params.id;
-  prospectonl.update({precalif : true, direccion : req.body.direccion, anotacion : req.body.anotacion},
-   {
-    where: { id: id }
-  }).then(num => {
-    if (num == 1) {
-      res.sendStatus(200);
-    } else {
+  prospectonl.update({ precalif: true, direccion: req.body.direccion, anotacion: req.body.anotacion },
+    {
+      where: { id: id }
+    }).then(num => {
+      if (num == 1) {
+        res.sendStatus(200);
+      } else {
+        res.sendStatus(500);
+      }
+    }).catch(err => {
       res.sendStatus(500);
-    }
-  }).catch(err => {
-    res.sendStatus(500);
-  });
+    });
 };
 
 exports.getByRange = (req, res) => {
   prospectonl.findAll({
-    where: {aplica: 'si', precalif: 'false'},
+    where: { aplica: 'si', precalif: 'false' },
     offset: req.params.inferior, limit: req.params.superior
   }).then(data => {
     res.send(data);
   }).catch(err => {
     res.status(500).send({
-      message:err
+      message: err
     });
   });
 };
@@ -73,13 +73,13 @@ exports.getByRange = (req, res) => {
 exports.getProspectNL = (req, res) => {
   prospectonl.findAll({
     attributes: ['nombre', 'curp', 'direccion', 'anotacion'],
-    where: {aplica: 'si', precalif: 'true'}
+    where: { aplica: 'si', precalif: 'true' }
   }).then(data => {
-      //console.log(data);
-      res.send(data);
+    //console.log(data);
+    res.send(data);
   }).catch(err => {
     res.status(500).send({
-      message:err
+      message: err
     });
   });
 };
@@ -89,7 +89,7 @@ exports.getAll = (req, res) => {
     res.send(data);
   }).catch(err => {
     res.status(500).send({
-      message:err
+      message: err
     });
   });
 };
@@ -109,8 +109,8 @@ exports.add = (req, res) => {
   }).then(data => {
     res.send({ message: "Register was registered successfully" });
   }).catch(err => {
-      console.log(err)
-      res.status(500).send({ message: err.message });
+    console.log(err)
+    res.status(500).send({ message: err.message });
   });
 
 };
